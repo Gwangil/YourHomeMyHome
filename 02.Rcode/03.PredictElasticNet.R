@@ -1,16 +1,16 @@
-### µ¥ÀÌÅÍ : '½Ç°Å·¡°¡ ¼öÁı µ¥ÀÌÅÍ Á¤¸®.R'ÀÇ X_all ¶Ç´Â ÀüÃ¼ µ¥ÀÌÅÍ¸¦ ºÒ·¯¿Í¼­ ½ÃÀÛ.
+### ë°ì´í„° : 'ì‹¤ê±°ë˜ê°€ ìˆ˜ì§‘ ë°ì´í„° ì •ë¦¬.R'ì˜ X_all ë˜ëŠ” ì „ì²´ ë°ì´í„°ë¥¼ ë¶ˆëŸ¬ì™€ì„œ ì‹œì‘.
 #install.packages("data.table")
 #install.packages('stringr')
 library(data.table)
 library(stringr)
 
-X_all <- fread("E:/00.´ÏÁı³»Áı/90.µ¥ÀÌÅÍ¼öÁı/01.½Ç°Å·¡°¡/all.csv")						# ½Ç°Å·¡°¡ Á¤¸® ÄÚµå¸¦ ÀÌ¿ëÇØ¼­ all.csv¸¦ ¸¸µç°ÍÀ» ºÒ·¯¿È
+X_all <- fread("E:/00.ë‹ˆì§‘ë‚´ì§‘/90.ë°ì´í„°ìˆ˜ì§‘/01.ì‹¤ê±°ë˜ê°€/all.csv")						# ì‹¤ê±°ë˜ê°€ ì •ë¦¬ ì½”ë“œë¥¼ ì´ìš©í•´ì„œ all.csvë¥¼ ë§Œë“ ê²ƒì„ ë¶ˆëŸ¬ì˜´
 colnames(X_all) <- c("si","gu","dong","bungi","bungi_main","bungi_sub","complex",
-				"area","yearMonth","day","price","floor","constructed","roadName")	# column¸íÀ» ¿µ¹®À¸·Î º¯È¯...R¿¡¼­ ÇÑ±ÛÀº ÀÎÄÚµùÀÌ....¤Ì¤Ì
-X_all$yearMonth <- as.Date(paste0(X_all$yearMonth,01),"%Y%m%d")						# yyyymmÀ¸·Î ¹ŞÀº µ¥ÀÌÅÍ¿¡ ÀÓÀÇ·Î 01(dd)À» ºÙ¿© DateÅ¸ÀÔÀ¸·Î º¯È¯
-X_all$si <- as.factor(X_all$si)											# chr(character)Çü½ÄÀ» factor·Î º¯È¯ : ÃßÈÄ ¸ğµ¨ÀûÇÕ½Ã ¼ÓµµÇâ»ó(À½.. ¹®ÀÚ¿­ÀÌ¶û ¿äÀÎ(factor)¶û R¿¡¼­ Ãë±ŞÇÏ´Â°Ô Á¶±İ ´Ù¸§...)
-X_all$gu <- as.factor(X_all$gu)											# ¹®ÀÚ¿­Àº ÇÏ³ªÇÏ³ª°¡ ´Ù ´Ù¸¥ °³º° °ªÀÌÁö¸¸
-X_all$dong <- as.factor(X_all$dong)											# factor´Â ÇØ´ç °ªÀÇ ¸ñ·Ï(levels)ÀÌ ÀÖ°í, ÇØ´ç °ªÀº ±× ¸ñ·ÏÀÇ ¸î ¹øÂ° °ªÀ» °¡Á®¿Â°ÇÁö ¾Ë ¼ö ÀÖÀ½ levels(factorTypeData), as.numeric(factorTypeData)½ÄÀ¸·Î
+				"area","yearMonth","day","price","floor","constructed","roadName")	# columnëª…ì„ ì˜ë¬¸ìœ¼ë¡œ ë³€í™˜...Rì—ì„œ í•œê¸€ì€ ì¸ì½”ë”©ì´....ã…œã…œ
+X_all$yearMonth <- as.Date(paste0(X_all$yearMonth,01),"%Y%m%d")						# yyyymmìœ¼ë¡œ ë°›ì€ ë°ì´í„°ì— ì„ì˜ë¡œ 01(dd)ì„ ë¶™ì—¬ Dateíƒ€ì…ìœ¼ë¡œ ë³€í™˜
+X_all$si <- as.factor(X_all$si)											# chr(character)í˜•ì‹ì„ factorë¡œ ë³€í™˜ : ì¶”í›„ ëª¨ë¸ì í•©ì‹œ ì†ë„í–¥ìƒ(ìŒ.. ë¬¸ìì—´ì´ë‘ ìš”ì¸(factor)ë‘ Rì—ì„œ ì·¨ê¸‰í•˜ëŠ”ê²Œ ì¡°ê¸ˆ ë‹¤ë¦„...)
+X_all$gu <- as.factor(X_all$gu)											# ë¬¸ìì—´ì€ í•˜ë‚˜í•˜ë‚˜ê°€ ë‹¤ ë‹¤ë¥¸ ê°œë³„ ê°’ì´ì§€ë§Œ
+X_all$dong <- as.factor(X_all$dong)											# factorëŠ” í•´ë‹¹ ê°’ì˜ ëª©ë¡(levels)ì´ ìˆê³ , í•´ë‹¹ ê°’ì€ ê·¸ ëª©ë¡ì˜ ëª‡ ë²ˆì§¸ ê°’ì„ ê°€ì ¸ì˜¨ê±´ì§€ ì•Œ ìˆ˜ ìˆìŒ levels(factorTypeData), as.numeric(factorTypeData)ì‹ìœ¼ë¡œ
 X_all$bungi <- as.factor(X_all$bungi)
 X_all$bungi_main <- as.factor(X_all$bungi_main)
 X_all$bungi_sub <- as.factor(X_all$bungi_sub)
@@ -18,131 +18,131 @@ X_all$complex <- as.factor(X_all$complex)
 X_all$day <- as.factor(str_sub(X_all$day,1,-3))
 X_all$roadName <- as.factor(X_all$roadName)
 
-X_all[which.min(X_all$price),]											# which.minÀº ÃÖ¼Ò°ªÀÇ index¸¦ Ã£¾ÆÁÜ
-X_prac <- X_all[-which.min(X_all$price),]										# X.prac¿¡ priceÀÇ ÃÖ¼Ò°ªÀÌ ÀÖ´Â index¸¦ Á¦¿ÜÇÏ°í ÇÒ´ç -- ³ªÁß¿¡ Æò±Õ°ªÀ¸·Î Áöµµ¿¡ »Ñ¸®´Âµ¥, ÀÌ»óÄ¡°¡ Æò±Õ¿¡ ¿µÇâÀ»ÁÜ
+X_all[which.min(X_all$price),]											# which.minì€ ìµœì†Œê°’ì˜ indexë¥¼ ì°¾ì•„ì¤Œ
+X_prac <- X_all[-which.min(X_all$price),]										# X.pracì— priceì˜ ìµœì†Œê°’ì´ ìˆëŠ” indexë¥¼ ì œì™¸í•˜ê³  í• ë‹¹ -- ë‚˜ì¤‘ì— í‰ê· ê°’ìœ¼ë¡œ ì§€ë„ì— ë¿Œë¦¬ëŠ”ë°, ì´ìƒì¹˜ê°€ í‰ê· ì— ì˜í–¥ì„ì¤Œ
 str(X_prac)
 
-### ½ÃÀå±İ¸® µ¥ÀÌÅÍ
-rate <- fread("E:/00.´ÏÁı³»Áı/90.µ¥ÀÌÅÍ¼öÁı/02.¼öÁ¤ ¹× csv/4.1.2 ½ÃÀå±İ¸®(¿ù_ºĞ±â_³â).csv")
+### ì‹œì¥ê¸ˆë¦¬ ë°ì´í„°
+rate <- fread("E:/00.ë‹ˆì§‘ë‚´ì§‘/90.ë°ì´í„°ìˆ˜ì§‘/02.ìˆ˜ì • ë° csv/4.1.2 ì‹œì¥ê¸ˆë¦¬(ì›”_ë¶„ê¸°_ë…„).csv")
 colnames(rate) <- c("yearMonth","cd91","bond5","bond10")
 rate$yearMonth <- as.Date(paste0(rate$yearMonth,01),"%Y%m%d")
 str(rate)
-x <- merge(X_prac,rate,by="yearMonth")										# X_prac¿Í rate¸¦ yearMonth ±âÁØÀ¸·Î merge
+x <- merge(X_prac,rate,by="yearMonth")										# X_pracì™€ rateë¥¼ yearMonth ê¸°ì¤€ìœ¼ë¡œ merge
 
-### ÇĞ±³ ¼ö µ¥ÀÌÅÍ(°íµîÇĞ±³¸¸ »ç¿ë)
-highSchool <- fread("E:/00.´ÏÁı³»Áı/90.µ¥ÀÌÅÍ¼öÁı/02.¼öÁ¤ ¹× csv/2017³â_ÇĞ±³+ÇĞ±³¼ö.csv")[,c(2,6)]	# ÇĞ±³¼ö csv µ¥ÀÌÅÍ¿¡¼­ 2¿­(±¸), 6¿­(°íµîÇĞ±³)¸¸ ÀúÀå½ÃÅ´
+### í•™êµ ìˆ˜ ë°ì´í„°(ê³ ë“±í•™êµë§Œ ì‚¬ìš©)
+highSchool <- fread("E:/00.ë‹ˆì§‘ë‚´ì§‘/90.ë°ì´í„°ìˆ˜ì§‘/02.ìˆ˜ì • ë° csv/2017ë…„_í•™êµ+í•™êµìˆ˜.csv")[,c(2,6)]	# í•™êµìˆ˜ csv ë°ì´í„°ì—ì„œ 2ì—´(êµ¬), 6ì—´(ê³ ë“±í•™êµ)ë§Œ ì €ì¥ì‹œí‚´
 colnames(highSchool) <- c("gu", "highSchool")
 x <- merge(x,highSchool,by = "gu")
 
-### ¹ÌºĞ¾çÁÖÅÃ µ¥ÀÌÅÍ
-unsold <- fread("E:/00.´ÏÁı³»Áı/90.µ¥ÀÌÅÍ¼öÁı/02.¼öÁ¤ ¹× csv/¹ÌºĞ¾çÁÖÅÃÇöÈ².csv")
+### ë¯¸ë¶„ì–‘ì£¼íƒ ë°ì´í„°
+unsold <- fread("E:/00.ë‹ˆì§‘ë‚´ì§‘/90.ë°ì´í„°ìˆ˜ì§‘/02.ìˆ˜ì • ë° csv/ë¯¸ë¶„ì–‘ì£¼íƒí˜„í™©.csv")
 colnames(unsold) <- c("year","month","unsold")
-unsold$unsold <- as.numeric(gsub(",","",unsold$unsold))							# ¹ÌºĞ¾ç°Ç¼ö µ¥ÀÌÅÍ°¡ Ãµ´ÜÀ§±¸ºĞ(,)°¡ Æ÷ÇÔµÇ¾î chr Å¸ÀÔÀ¸·Î ºÒ·¯¿Â°É, Ãµ´ÜÀ§ ±¸ºĞÀÚ¸¦ »©°í numeric Å¸ÀÔÀ¸·Î º¯È¯
-unsold$yearMonth <- seq(as.Date("20120101","%Y%m%d"),as.Date("20161201","%Y%m%d"),by="month")	# ¿¬¿ùÀÌ µû·Î µÇ¾îÀÖ´Â°É ÇÕÃÄ´Â °Í ´ë½Å »õ·Î 20120101 ºÎÅÍ 20161201 ±îÁö ¿ù°£°İÀ¸·Î »ı¼º
-x <- merge(x, unsold[,c(3,4)],by="yearMonth")									# ¹ÌºĞ¾ç°Ç¼ö¿Í »õ·Î¸¸µç ¿¬¿ù ÄÃ·³¸¸ °ñ¶ó¼­ º´ÇÕ
+unsold$unsold <- as.numeric(gsub(",","",unsold$unsold))							# ë¯¸ë¶„ì–‘ê±´ìˆ˜ ë°ì´í„°ê°€ ì²œë‹¨ìœ„êµ¬ë¶„(,)ê°€ í¬í•¨ë˜ì–´ chr íƒ€ì…ìœ¼ë¡œ ë¶ˆëŸ¬ì˜¨ê±¸, ì²œë‹¨ìœ„ êµ¬ë¶„ìë¥¼ ë¹¼ê³  numeric íƒ€ì…ìœ¼ë¡œ ë³€í™˜
+unsold$yearMonth <- seq(as.Date("20120101","%Y%m%d"),as.Date("20161201","%Y%m%d"),by="month")	# ì—°ì›”ì´ ë”°ë¡œ ë˜ì–´ìˆëŠ”ê±¸ í•©ì³ëŠ” ê²ƒ ëŒ€ì‹  ìƒˆë¡œ 20120101 ë¶€í„° 20161201 ê¹Œì§€ ì›”ê°„ê²©ìœ¼ë¡œ ìƒì„±
+x <- merge(x, unsold[,c(3,4)],by="yearMonth")									# ë¯¸ë¶„ì–‘ê±´ìˆ˜ì™€ ìƒˆë¡œë§Œë“  ì—°ì›” ì»¬ëŸ¼ë§Œ ê³¨ë¼ì„œ ë³‘í•©
 
 ########################## Model Fitting ###########################
 #install.pacakges('dplyr')
-#install.pacakges('glmnet')												# Elastic Net(LASSO & RIDGE Regression) ÇÏ±â À§ÇÑ ÆĞÅ°Áö
-#install.pacakges('glmnetUtils')											# glmnet ÆĞÅ°Áö¸¦ Á¶±İ °³¼±, formulaÇü½Ä Áö¿ø : ¹İÀÀº¯¼ö~¼³¸íº¯¼ö, cross validation ÇÔ¼ö Á¦°ø
-#install.pacakges('caret')												# ¿©·¯°¡Áö ¸ğµ¨¸µ ÇÔ¼ö ¿Í ½Ã¹Ä·¹ÀÌ¼Ç È¯°æÀ» ¼³Á¤, ¼öÇàÇÒ ¼ö ÀÖÀ½
+#install.pacakges('glmnet')												# Elastic Net(LASSO & RIDGE Regression) í•˜ê¸° ìœ„í•œ íŒ¨í‚¤ì§€
+#install.pacakges('glmnetUtils')											# glmnet íŒ¨í‚¤ì§€ë¥¼ ì¡°ê¸ˆ ê°œì„ , formulaí˜•ì‹ ì§€ì› : ë°˜ì‘ë³€ìˆ˜~ì„¤ëª…ë³€ìˆ˜, cross validation í•¨ìˆ˜ ì œê³µ
+#install.pacakges('caret')												# ì—¬ëŸ¬ê°€ì§€ ëª¨ë¸ë§ í•¨ìˆ˜ ì™€ ì‹œë®¬ë ˆì´ì…˜ í™˜ê²½ì„ ì„¤ì •, ìˆ˜í–‰í•  ìˆ˜ ìˆìŒ
 library(dplyr)
 library(glmnet)
 library(glmnetUtils)
 
-### Elastic Net °³¿ä
-# ±âÁ¸ÀÇ ´ÙÁß¼±ÇüÈ¸±Í¸ğÇü¿¡¼­ ¼³¸í·ÂÀÇ º¯È­¿¡ °üÇÑ Á¦¾àÁ¶°ÇÀ» °è¼ö¸¦ Á¶Á¤ÇØ¼­ Áß¿äº¯¼ö ¼±ÅÃ °¡´É, ÁÖ¾îÁø µ¥ÀÌÅÍ¿¡ °úÀûÇÕ(overfitting)ÇÏ´Â°ÍÀ» ÁÙÀÓ
-# LASSO, RIDGE¸¦ ºñ·ÔÇÏ¿© ´Ù¾çÇÑ ¹æ¹ıÀ¸·Î Á¦¾àÁ¶°ÇÀ» ¼³Á¤ÇÔ, Á¦¾àÀÇ Á¤µµ¸¦ ¼³Á¤ÇÏ´Â hyper parameter : lambda
-# Á¦¾àÀÌ °­ÇØ Áú¼ö·Ï »ç¿ëµÇ´Â ¼³¸íº¯¼öÀÇ ¼ö°¡ ÁÙ¾îµé°í °è¼ö´Â 0À¸·Î °¡±î¿öÁü : ¿µÇâÀÌ Å« º¯¼ö°¡ »ıÁ¸
-# ±×Áß alpha * LASSO¿Í (1-alpha) * RIDGE ¹æ½ÄÀ¸·Î ¼¯Àº °ÍÀÌ Elastic Net
-# ´ÙÁß¼±ÇüÈ¸±Í¸ğÇü¿¡¼­ alpah, lambda ÃÖ¼Ò 2°³ÀÇ hyper parameter Ãß°¡
+### Elastic Net ê°œìš”
+# ê¸°ì¡´ì˜ ë‹¤ì¤‘ì„ í˜•íšŒê·€ëª¨í˜•ì—ì„œ ì„¤ëª…ë ¥ì˜ ë³€í™”ì— ê´€í•œ ì œì•½ì¡°ê±´ì„ ê³„ìˆ˜ë¥¼ ì¡°ì •í•´ì„œ ì¤‘ìš”ë³€ìˆ˜ ì„ íƒ ê°€ëŠ¥, ì£¼ì–´ì§„ ë°ì´í„°ì— ê³¼ì í•©(overfitting)í•˜ëŠ”ê²ƒì„ ì¤„ì„
+# LASSO, RIDGEë¥¼ ë¹„ë¡¯í•˜ì—¬ ë‹¤ì–‘í•œ ë°©ë²•ìœ¼ë¡œ ì œì•½ì¡°ê±´ì„ ì„¤ì •í•¨, ì œì•½ì˜ ì •ë„ë¥¼ ì„¤ì •í•˜ëŠ” hyper parameter : lambda
+# ì œì•½ì´ ê°•í•´ ì§ˆìˆ˜ë¡ ì‚¬ìš©ë˜ëŠ” ì„¤ëª…ë³€ìˆ˜ì˜ ìˆ˜ê°€ ì¤„ì–´ë“¤ê³  ê³„ìˆ˜ëŠ” 0ìœ¼ë¡œ ê°€ê¹Œì›Œì§ : ì˜í–¥ì´ í° ë³€ìˆ˜ê°€ ìƒì¡´
+# ê·¸ì¤‘ alpha * LASSOì™€ (1-alpha) * RIDGE ë°©ì‹ìœ¼ë¡œ ì„ì€ ê²ƒì´ Elastic Net
+# ë‹¤ì¤‘ì„ í˜•íšŒê·€ëª¨í˜•ì—ì„œ alpah, lambda ìµœì†Œ 2ê°œì˜ hyper parameter ì¶”ê°€
 
 ### Cross Validation
-# 10-fold¶ó°í ÇÏ¸é µ¥ÀÌÅÍ¸¦ 10°³ÀÇ ±×·ìÀ¸·Î ³ª´©°í
-# ±×Áß 1±×·ìÀ» test Set, 
+# 10-foldë¼ê³  í•˜ë©´ ë°ì´í„°ë¥¼ 10ê°œì˜ ê·¸ë£¹ìœ¼ë¡œ ë‚˜ëˆ„ê³ 
+# ê·¸ì¤‘ 1ê·¸ë£¹ì„ test Set, 
 
-###glmnetÇÔ¼ö ±âº» ³»¿ë
+###glmnetí•¨ìˆ˜ ê¸°ë³¸ ë‚´ìš©
 # glmnet(x, y, alpha, lambda, family, ...)
-# -- x : ¼³¸íº¯¼ö, y : ¹İÀÀº¯¼ö, alpha´Â LASSO, RIDGE Á¶ÇÕÁ¤µµ(1=LASSO(±âº»°ª), 0=RIDGE)
-# -- lambda´Â ÁÖ¾îÁø alpha¿¡¼­ lambda¸¦ ¾î¶»°Ô ¼³Á¤ÇÒÁö, ºñ¿öµÎ¸é ÇÔ¼ö°¡ ÀûÀıÈ÷ ¶÷´Ù »ı¼º
-# -- family´Â °£´ÜÈ÷ ¿¬¼ÓÇü : "gaussian", ¹üÁÖÇü : "binomail", ÀÌ¿ÜÀÇ ¿©·¯°¡Áö ÀÖÀ½
-# glmnetUtils¸¦ »ç¿ëÇÏ¸é y~x, data=X ½ÄÀÇ formula Çü½Ä »ç¿ë°¡´É
+# -- x : ì„¤ëª…ë³€ìˆ˜, y : ë°˜ì‘ë³€ìˆ˜, alphaëŠ” LASSO, RIDGE ì¡°í•©ì •ë„(1=LASSO(ê¸°ë³¸ê°’), 0=RIDGE)
+# -- lambdaëŠ” ì£¼ì–´ì§„ alphaì—ì„œ lambdaë¥¼ ì–´ë–»ê²Œ ì„¤ì •í• ì§€, ë¹„ì›Œë‘ë©´ í•¨ìˆ˜ê°€ ì ì ˆíˆ ëŒë‹¤ ìƒì„±
+# -- familyëŠ” ê°„ë‹¨íˆ ì—°ì†í˜• : "gaussian", ë²”ì£¼í˜• : "binomail", ì´ì™¸ì˜ ì—¬ëŸ¬ê°€ì§€ ìˆìŒ
+# glmnetUtilsë¥¼ ì‚¬ìš©í•˜ë©´ y~x, data=X ì‹ì˜ formula í˜•ì‹ ì‚¬ìš©ê°€ëŠ¥
 
 
 ### Using 'glmnetUtils' Package
-model_ela <- cva.glmnet(log(price)~., data=									# cva.glmnetÀ¸·Î alpha°ªµµ ¹Ù²ã°¡¸ç 10-fold(±âº»°ª) cross validation ½Ç½Ã
-		subset(x,select=-c(si,bungi,bungi_main,bungi_sub,complex,day,roadName,cd91,bond5)))	# ½Ã, ¹øÁö, ´ÜÁö¸í µî º¯¼ö´Â Á¦¿ÜÇÏ°í ½ÇÇà : ÀÇ¹Ì°¡ ¾ø°Å³ª, ÆÇ´Ü»óÀÇ ÀÌÀ¯·Î Á¦°Å
+model_ela <- cva.glmnet(log(price)~., data=									# cva.glmnetìœ¼ë¡œ alphaê°’ë„ ë°”ê¿”ê°€ë©° 10-fold(ê¸°ë³¸ê°’) cross validation ì‹¤ì‹œ
+		subset(x,select=-c(si,bungi,bungi_main,bungi_sub,complex,day,roadName,cd91,bond5)))	# ì‹œ, ë²ˆì§€, ë‹¨ì§€ëª… ë“± ë³€ìˆ˜ëŠ” ì œì™¸í•˜ê³  ì‹¤í–‰ : ì˜ë¯¸ê°€ ì—†ê±°ë‚˜, íŒë‹¨ìƒì˜ ì´ìœ ë¡œ ì œê±°
 
-summary(model_ela)													# alpha 11Á¾·ù, ÀÌ¿¡ µû¸¥ ¸ğµ¨¸®½ºÆ® 11°¡Áö µîÀÇ Á¤º¸ È®ÀÎ
-str(model_ela)														# cva.glmnetÀÇ °á°ú¿¡ ´ëÇÑ ±¸Á¶ È®ÀÎ°¡´É : $, [[ ]] °°Àº ¹æ¹ıÀ¸·Î Ã£¾Æ µé¾î°¥¼ö ÀÖÀ½
+summary(model_ela)													# alpha 11ì¢…ë¥˜, ì´ì— ë”°ë¥¸ ëª¨ë¸ë¦¬ìŠ¤íŠ¸ 11ê°€ì§€ ë“±ì˜ ì •ë³´ í™•ì¸
+str(model_ela)														# cva.glmnetì˜ ê²°ê³¼ì— ëŒ€í•œ êµ¬ì¡° í™•ì¸ê°€ëŠ¥ : $, [[ ]] ê°™ì€ ë°©ë²•ìœ¼ë¡œ ì°¾ì•„ ë“¤ì–´ê°ˆìˆ˜ ìˆìŒ
 
-plot(model_ela)														# lambdaÀÇ º¯È­¿¡ µû¸¥ mse°ªÀÇ º¯È­ ÇÃ¶ù, alpha´Â ¼±»öÀ¸·Î ±¸ºĞ, ÆÄ¶õ»öÀ¸·Î °¥¼ö·Ï alpha°¡ 0¿¡ °¡±î¿ò
-model_ela$alpha														# ¸ğµ¨ÀûÇÕ¿¡ »ç¿ëµÈ alpha°ª Ãâ·Â
-model_ela$modlist[[5]]													# model_elaÀÇ 11°³ modlist¿¡¼­ 5¹øÂ° ¸®½ºÆ®¸¦ °¡Áö°í¿È : alphaÀÇ 5¹øÂ° °ªÀÌ Àû¿ëµÈ ¸ğµ¨
-																# -- modlist ³»¿ë : glmnetÇÔ¼öÀÇ °á°ú¿Í À¯»ç
-																# -- $lambda : ÁÖ¾îÁø alphaÇÏ¿¡¼­ ¸ğµ¨ ÀûÇÕ½Ã lambda¸¦ º¯È­½ÃÅ°¸ç Àû¿ëÇÑ lambda°ªµé
-																# -- $cvm, cvsd, cvup, cvlo : °¢ ¸ğµ¨À» 10-fold cross validation ÇÏ¸ç °è»êµÈ mseÀÇ Æò±Õ, Ç¥ÁØÆíÂ÷, Æò±Õ+Ç¥ÁØÆíÂ÷, Æò±Õ-Ç¥ÁØÆíÂ÷ : lambdaÀÇ ¼ö ¸¸Å­ °è»ê
-																# -- $nzero : °¢ ¸ğµ¨¿¡¼­ °è¼öÀÇ °ªÀÌ 0ÀÌ ¾Æ´Ñ º¯¼ö°¡ ¸î°³ÀÎÁö ³ªÅ¸³¿
-																# -- $glmnet.fit : °¢ lambda¿¡¼­ÀÇ 0ÀÌ ¾Æ´Ñ °è¼öÀÇ ¼ö(Df), ¼³¸íÁ¤µµ(%Dev)¸¦ Ãâ·Â
-																# -- $lambda.min : mseÀÇ Æò±ÕÀÌ ÃÖ¼Ò ÀÏ¶§ lambda °ª
-																# -- $lambda.1se : mse°¡ ÃÖ¼Ò ÀÏ¶§¿¡¼­ Ç¥ÁØÆíÂ÷ÀÇ 1¹è ¸¸Å­ Çã¿ëÇßÀ» ¶§ lambda°ª, mse±âÁØÀ» º¸´Ù ´ú ¾ö°İÇÏ°Ô = Á¦¾àÁ¶°Ç lambda¸¦ °­ÇÏ°Ô, 0À¸·Î ¶³¾îÁö´Â º¯¼ö¸¦ ´Ã¸²
-plot(model_ela$modlist[[5]])												# 5¹øÂ° alphaÀÏ¶§ ¸ğµ¨ÀÇ mse°¡ º¯È­ÇÏ´Â ÇÃ¶ù
-																# -- »¡°£Á¡ÀÌ ÃÖ¼ÒÀÏ¶§ mse°í À§¾Æ·¡ÀÇ ¼±ÀÌ °¢°¢ cvup, cvloÀÌ´Ù. À§ÂÊÀÇ ¼ıÀÚ´Â °è¼ö°¡ 0ÀÌ ¾Æ´Ñ º¯¼öÀÇ ¼ö, Á¡¼±Àº °¢°¢ lambda.min, lambda.1se
-plot(model_ela$modlist[[5]]$glmnet.fit)										# 5¹øÂ° alpha¿¡¼­ °¢ °è¼ö°¡ ÁÙ¾î´Â °ÍÀ» º¸¿©ÁÜ
-																# -- L1 NormÀÌ ÀÛÀ»¼ö·Ï Á¦¾àÁ¶°ÇÀ» °­ÇÏ°Ô ÁÜ, À§ÂÊÀÇ ¼ıÀÚ°¡ º¯¼öÀÇ ¼ö
+plot(model_ela)														# lambdaì˜ ë³€í™”ì— ë”°ë¥¸ mseê°’ì˜ ë³€í™” í”Œë, alphaëŠ” ì„ ìƒ‰ìœ¼ë¡œ êµ¬ë¶„, íŒŒë€ìƒ‰ìœ¼ë¡œ ê°ˆìˆ˜ë¡ alphaê°€ 0ì— ê°€ê¹Œì›€
+model_ela$alpha														# ëª¨ë¸ì í•©ì— ì‚¬ìš©ëœ alphaê°’ ì¶œë ¥
+model_ela$modlist[[5]]													# model_elaì˜ 11ê°œ modlistì—ì„œ 5ë²ˆì§¸ ë¦¬ìŠ¤íŠ¸ë¥¼ ê°€ì§€ê³ ì˜´ : alphaì˜ 5ë²ˆì§¸ ê°’ì´ ì ìš©ëœ ëª¨ë¸
+																# -- modlist ë‚´ìš© : glmnetí•¨ìˆ˜ì˜ ê²°ê³¼ì™€ ìœ ì‚¬
+																# -- $lambda : ì£¼ì–´ì§„ alphaí•˜ì—ì„œ ëª¨ë¸ ì í•©ì‹œ lambdaë¥¼ ë³€í™”ì‹œí‚¤ë©° ì ìš©í•œ lambdaê°’ë“¤
+																# -- $cvm, cvsd, cvup, cvlo : ê° ëª¨ë¸ì„ 10-fold cross validation í•˜ë©° ê³„ì‚°ëœ mseì˜ í‰ê· , í‘œì¤€í¸ì°¨, í‰ê· +í‘œì¤€í¸ì°¨, í‰ê· -í‘œì¤€í¸ì°¨ : lambdaì˜ ìˆ˜ ë§Œí¼ ê³„ì‚°
+																# -- $nzero : ê° ëª¨ë¸ì—ì„œ ê³„ìˆ˜ì˜ ê°’ì´ 0ì´ ì•„ë‹Œ ë³€ìˆ˜ê°€ ëª‡ê°œì¸ì§€ ë‚˜íƒ€ëƒ„
+																# -- $glmnet.fit : ê° lambdaì—ì„œì˜ 0ì´ ì•„ë‹Œ ê³„ìˆ˜ì˜ ìˆ˜(Df), ì„¤ëª…ì •ë„(%Dev)ë¥¼ ì¶œë ¥
+																# -- $lambda.min : mseì˜ í‰ê· ì´ ìµœì†Œ ì¼ë•Œ lambda ê°’
+																# -- $lambda.1se : mseê°€ ìµœì†Œ ì¼ë•Œì—ì„œ í‘œì¤€í¸ì°¨ì˜ 1ë°° ë§Œí¼ í—ˆìš©í–ˆì„ ë•Œ lambdaê°’, mseê¸°ì¤€ì„ ë³´ë‹¤ ëœ ì—„ê²©í•˜ê²Œ = ì œì•½ì¡°ê±´ lambdaë¥¼ ê°•í•˜ê²Œ, 0ìœ¼ë¡œ ë–¨ì–´ì§€ëŠ” ë³€ìˆ˜ë¥¼ ëŠ˜ë¦¼
+plot(model_ela$modlist[[5]])												# 5ë²ˆì§¸ alphaì¼ë•Œ ëª¨ë¸ì˜ mseê°€ ë³€í™”í•˜ëŠ” í”Œë
+																# -- ë¹¨ê°„ì ì´ ìµœì†Œì¼ë•Œ mseê³  ìœ„ì•„ë˜ì˜ ì„ ì´ ê°ê° cvup, cvloì´ë‹¤. ìœ„ìª½ì˜ ìˆ«ìëŠ” ê³„ìˆ˜ê°€ 0ì´ ì•„ë‹Œ ë³€ìˆ˜ì˜ ìˆ˜, ì ì„ ì€ ê°ê° lambda.min, lambda.1se
+plot(model_ela$modlist[[5]]$glmnet.fit)										# 5ë²ˆì§¸ alphaì—ì„œ ê° ê³„ìˆ˜ê°€ ì¤„ì–´ëŠ” ê²ƒì„ ë³´ì—¬ì¤Œ
+																# -- L1 Normì´ ì‘ì„ìˆ˜ë¡ ì œì•½ì¡°ê±´ì„ ê°•í•˜ê²Œ ì¤Œ, ìœ„ìª½ì˜ ìˆ«ìê°€ ë³€ìˆ˜ì˜ ìˆ˜
 
 ### Using 'caret' Package
 ### Ref) https://quantmacro.wordpress.com/2016/04/26/fitting-elastic-net-model-in-r/
 library(caret)
 
-lambda.grid <- 10^seq(2,-2,length=100)										# lambdaÀÇ °ªÀ» 0.01ºÎÅÍ 100±îÁö 100°³ ÃßÃâ
-alpha.grid <- seq(0,1,length=11)											# alpha¿ª½Ã 0ºÎÅÍ 1±îÁö 0.1 °£°İÀ¸·Î »ı¼º
+lambda.grid <- 10^seq(2,-2,length=100)										# lambdaì˜ ê°’ì„ 0.01ë¶€í„° 100ê¹Œì§€ 100ê°œ ì¶”ì¶œ
+alpha.grid <- seq(0,1,length=11)											# alphaì—­ì‹œ 0ë¶€í„° 1ê¹Œì§€ 0.1 ê°„ê²©ìœ¼ë¡œ ìƒì„±
 
-trnCtrl <- trainControl(												# ½Ã¹Ä·¹ÀÌ¼Ç training ¼³Á¤
-  method = "repeatedCV",												# repeated Cross Validation ¹æ¹ı
-  number = 10,														# 10-folds Cross Validation ½Ç½Ã
-  repeats = 5														# repeated CV¿¡¼­ 5¹ø ¹İº¹ : n-folds CVÀ» 5¹ø ¹İº¹ÇÑ °á°úÀÇ Æò±ÕÀ» »ç¿ëÇÏ´Â ¹æ¹ı, Áï Æú´õ¼ö * ¹İº¹¼ö ¸¸Å­ ¸ğµ¨À» ÀûÇÕÇÏ°Ô µÊ
+trnCtrl <- trainControl(												# ì‹œë®¬ë ˆì´ì…˜ training ì„¤ì •
+  method = "repeatedCV",												# repeated Cross Validation ë°©ë²•
+  number = 10,														# 10-folds Cross Validation ì‹¤ì‹œ
+  repeats = 5														# repeated CVì—ì„œ 5ë²ˆ ë°˜ë³µ : n-folds CVì„ 5ë²ˆ ë°˜ë³µí•œ ê²°ê³¼ì˜ í‰ê· ì„ ì‚¬ìš©í•˜ëŠ” ë°©ë²•, ì¦‰ í´ë”ìˆ˜ * ë°˜ë³µìˆ˜ ë§Œí¼ ëª¨ë¸ì„ ì í•©í•˜ê²Œ ë¨
 )
 
-srchGrd <- expand.grid(.alpha = alpha.grid, .lambda = lambda.grid)					# alpha¿Í lambda¸¦ °¢°¢ ¸ÅÄª
+srchGrd <- expand.grid(.alpha = alpha.grid, .lambda = lambda.grid)					# alphaì™€ lambdaë¥¼ ê°ê° ë§¤ì¹­
 
-set.seed(01094844224)
-x_use = subset(x,select=-c(si,bungi,bungi_main,bungi_sub,complex,day,roadName,cd91,bond5))	# ¾ÕÀÇ ¹æ¹ı¿¡¼­ »ç¿ëÇÑ µ¥ÀÌÅÍ¸¦ ÀÓÀÇÀÇ x_use¿¡ ÇÒ´ç
+set.seed(123456789)
+x_use = subset(x,select=-c(si,bungi,bungi_main,bungi_sub,complex,day,roadName,cd91,bond5))	# ì•ì˜ ë°©ë²•ì—ì„œ ì‚¬ìš©í•œ ë°ì´í„°ë¥¼ ì„ì˜ì˜ x_useì— í• ë‹¹
 
-model_train <- train(log(price)~., data=x_use,									# trainÇÔ¼ö·Î training½ÃÀÛ : log(price)¸¦ ¹İÀÀº¯¼ö, x_useµ¥ÀÌÅÍ »ç¿ë 
-                     method = "glmnet",										# glmnetÀÇ ¹æ¹ıÀ» »ç¿ë, µµ¿ò¸»À» º¸¸é ´Ù¾çÇÑ ¸ğµ¨ÇÔ¼ö Áö¿ø
-                     tuneGrid = srchGrd,										# parameterµéÀÇ Æ©´×Àº ¾Õ¿¡¼­ alpha¿Í lambda¸¦ grid¸ÅÄª½ÃÅ² °ÍÀ» »ç¿ë
-                     trControl = trnCtrl,										# Ãß°¡ ¼³Á¤Àº ¾Õ¿¡¼­ ¼³Á¤ÇÑ°ÍÀ» µû¸§
-                     standardize = TRUE, maxit = 1000000							# µ¥ÀÌÅÍ¸¦ Ç¥ÁØÈ­ ½ÃÅ°Å°°í, ½ÄÀÌ ¼ö·ÅÇÏÁö ¾ÊÀ» °æ¿ì ÃÖ´ë¹İº¹¼ö´Â 100¸¸¹ø ¹İº¹ ÈÄ ±Ù»ç°ª »ç¿ë
+model_train <- train(log(price)~., data=x_use,									# trainí•¨ìˆ˜ë¡œ trainingì‹œì‘ : log(price)ë¥¼ ë°˜ì‘ë³€ìˆ˜, x_useë°ì´í„° ì‚¬ìš© 
+                     method = "glmnet",										# glmnetì˜ ë°©ë²•ì„ ì‚¬ìš©, ë„ì›€ë§ì„ ë³´ë©´ ë‹¤ì–‘í•œ ëª¨ë¸í•¨ìˆ˜ ì§€ì›
+                     tuneGrid = srchGrd,										# parameterë“¤ì˜ íŠœë‹ì€ ì•ì—ì„œ alphaì™€ lambdaë¥¼ gridë§¤ì¹­ì‹œí‚¨ ê²ƒì„ ì‚¬ìš©
+                     trControl = trnCtrl,										# ì¶”ê°€ ì„¤ì •ì€ ì•ì—ì„œ ì„¤ì •í•œê²ƒì„ ë”°ë¦„
+                     standardize = TRUE, maxit = 1000000							# ë°ì´í„°ë¥¼ í‘œì¤€í™” ì‹œí‚¤í‚¤ê³ , ì‹ì´ ìˆ˜ë ´í•˜ì§€ ì•Šì„ ê²½ìš° ìµœëŒ€ë°˜ë³µìˆ˜ëŠ” 100ë§Œë²ˆ ë°˜ë³µ í›„ ê·¼ì‚¬ê°’ ì‚¬ìš©
 )
 
-win.graph();plot(model_train)												# alpha(Mixing Percentage), lambda(Regularization Parameter)ÀÇ º¯È­¿¡ µû¸¥ ¸ğÇüÀÇ RMSE°ªÀÇ º¯È­
-# savePlot("ÀúÀå°æ·Î/ÆÄÀÏ¸í.png",type="png")
+win.graph();plot(model_train)												# alpha(Mixing Percentage), lambda(Regularization Parameter)ì˜ ë³€í™”ì— ë”°ë¥¸ ëª¨í˜•ì˜ RMSEê°’ì˜ ë³€í™”
+# savePlot("ì €ì¥ê²½ë¡œ/íŒŒì¼ëª….png",type="png")
 
-#attributes(model_train)												# model_train¿¡ Æ÷ÇÔµÇ¾îÀÖ´Â °ÍµéÀÌ ¾î¶² °ÍÀÌ ÀÖ´ÂÁö Ãâ·Â
-model_train$bestTune													# RMSE°¡ ÃÖ¼Ò°¡ µÉ¶§ÀÇ alpha, lambda¸¦ ±¸ÇØÁÜ
-model.glmnet <- model_train$finalModel										# bestTuneÀÇ alpha,lambda°¡ Àû¿ëµÈ glmnet¸ğµ¨ÀÌ finalModel¿¡ µé¾î ÀÖ¾î¼­ ±×°ÍÀ» model.glmnet¿¡ ÇÒ´çÇØÁÜ
+#attributes(model_train)												# model_trainì— í¬í•¨ë˜ì–´ìˆëŠ” ê²ƒë“¤ì´ ì–´ë–¤ ê²ƒì´ ìˆëŠ”ì§€ ì¶œë ¥
+model_train$bestTune													# RMSEê°€ ìµœì†Œê°€ ë ë•Œì˜ alpha, lambdaë¥¼ êµ¬í•´ì¤Œ
+model.glmnet <- model_train$finalModel										# bestTuneì˜ alpha,lambdaê°€ ì ìš©ëœ glmnetëª¨ë¸ì´ finalModelì— ë“¤ì–´ ìˆì–´ì„œ ê·¸ê²ƒì„ model.glmnetì— í• ë‹¹í•´ì¤Œ
 
-coef_gdadfccbbh <- coef(model.glmnet, s=model_train$bestTune$lambda)					# coefÇÔ¼ö¸¦ ÀÌ¿ëÇÏ¿© ¸ğµ¨object¿¡ ´ëÇÑ coefficient¸¦ ±¸ÇÔ, s¿É¼ÇÀ¸·Î lambda¸¦ Æ¯Á¤ÁöÀ½
+coef_gdadfccbbh <- coef(model.glmnet, s=model_train$bestTune$lambda)					# coefí•¨ìˆ˜ë¥¼ ì´ìš©í•˜ì—¬ ëª¨ë¸objectì— ëŒ€í•œ coefficientë¥¼ êµ¬í•¨, sì˜µì…˜ìœ¼ë¡œ lambdaë¥¼ íŠ¹ì •ì§€ìŒ
 coef_gdadfccbbh
 
 ###no standardized & numeric partial scale
 
 x_use <- subset(x, select = c(price,date,gu,dong,area,floor,constructed,bond10,highSchool,unsold))
-x_use <- cbind(x_use[,1:4],scale(x_use[,5:10]))									# ¿¬¼ÓÇü¼³¸íº¯¼öµé(5~10¹øÂ° column)¸¸ scale·Î Ç¥ÁØÈ­½ÃÅ´; ¹İÀÀº¯¼ö,³¯Â¥,ÁúÀûº¯¼ö´Â Ç¥ÁØÈ­ ¾ÈµÊ.
+x_use <- cbind(x_use[,1:4],scale(x_use[,5:10]))									# ì—°ì†í˜•ì„¤ëª…ë³€ìˆ˜ë“¤(5~10ë²ˆì§¸ column)ë§Œ scaleë¡œ í‘œì¤€í™”ì‹œí‚´; ë°˜ì‘ë³€ìˆ˜,ë‚ ì§œ,ì§ˆì ë³€ìˆ˜ëŠ” í‘œì¤€í™” ì•ˆë¨.
 
-set.seed(01094844224)
+set.seed(123456789)
 model_train <- train(log(price)~., data=x_use,
                      method = "glmnet",
                      tuneGrid = srchGrd,
                      trControl = trnCtrl,
-                     standardize = FALSE, maxit = 1000000							# ¾Õ¿¡¼± standardize=TURE·ÎÀÎÇØ µ¥ÀÌÅÍÅ¸ÀÔÀ» °¡¸®Áö¾Ê°í Ç¥ÁØÈ­ Çß´Ù¸é, ÀÌ¹ø¿£ Ç¥ÁØÈ­°¡ ÇÊ¿äÇÑ º¯¼ö¸¦ Ç¥ÁØÈ­ÇØ¼­ ¿À±â¶§¹®¿¡ FALSE·Î ÇÑ´Ù
+                     standardize = FALSE, maxit = 1000000							# ì•ì—ì„  standardize=TUREë¡œì¸í•´ ë°ì´í„°íƒ€ì…ì„ ê°€ë¦¬ì§€ì•Šê³  í‘œì¤€í™” í–ˆë‹¤ë©´, ì´ë²ˆì—” í‘œì¤€í™”ê°€ í•„ìš”í•œ ë³€ìˆ˜ë¥¼ í‘œì¤€í™”í•´ì„œ ì˜¤ê¸°ë•Œë¬¸ì— FALSEë¡œ í•œë‹¤
 )
 
 win.graph();plot(model_train)
-# savePlot("ÀúÀå°æ·Î/ÆÄÀÏ¸í.png",type="png")
+# savePlot("ì €ì¥ê²½ë¡œ/íŒŒì¼ëª….png",type="png")
 
-model_train$result													# alpha¿Í lambda¿¡ µû¶ó RMSE, sd(RMSE), R^2, sd(R^2) ±¸ÇØÁÜ, R^2(R squared)´Â ¸ğµ¨ÀÌ µ¥ÀÌÅÍ¸¦ ¾ó¸¶¸¸Å­ ¼³¸íÇØÁÖ´ÂÁö ³ªÅ¸³¿
+model_train$result													# alphaì™€ lambdaì— ë”°ë¼ RMSE, sd(RMSE), R^2, sd(R^2) êµ¬í•´ì¤Œ, R^2(R squared)ëŠ” ëª¨ë¸ì´ ë°ì´í„°ë¥¼ ì–¼ë§ˆë§Œí¼ ì„¤ëª…í•´ì£¼ëŠ”ì§€ ë‚˜íƒ€ëƒ„
 model_train$bestTune
 model.glmnet <- model_train$finalModel
 
@@ -150,13 +150,13 @@ coef_dgdafcbhu_nostandard_partscale <- coef(model.glmnet, s=model_train$bestTune
 coef_dgdafcbhu_nostandard_partscale
 
 ###
-# ÀÌ·¯ÇÑ ¹æ¹ıÀ¸·Î »ç¿ëº¯¼ö, µ¥ÀÌÅÍÀÇ Å©±â, method, parameter µîÀ» ¹Ù²ã°¡¸ç ÁÁÀº ¸ğµ¨À» ¸¸µé¾î°¡¸é µË´Ï´Ù.
-# ¸Ó½Å·¯´× ±â¹ı Áß ÇÏ³ª¶ó°í º¸¸é µÊ.
+# ì´ëŸ¬í•œ ë°©ë²•ìœ¼ë¡œ ì‚¬ìš©ë³€ìˆ˜, ë°ì´í„°ì˜ í¬ê¸°, method, parameter ë“±ì„ ë°”ê¿”ê°€ë©° ì¢‹ì€ ëª¨ë¸ì„ ë§Œë“¤ì–´ê°€ë©´ ë©ë‹ˆë‹¤.
+# ë¨¸ì‹ ëŸ¬ë‹ ê¸°ë²• ì¤‘ í•˜ë‚˜ë¼ê³  ë³´ë©´ ë¨.
 
-model_using <- glmnet(log(price)~.,data=x_use,alpha=0.1,lambda=0.01)					# alpha¿Í lambda¸¦ ÀÌ·¸°Ô Æ¯Á¤Áö¾î¼­ glmnetÀ¸·Î ¸ğµ¨À» ÀûÇÕÇÒ ¼ö µµ ÀÖÀ½, Àû´çÇÑ alpha, lambda´Â ²À bestTune¿¡¼­ ³ª¿À´Â°Ô ¾Æ´Ò ¼öµµ ÀÖÀ½
-summary(model_using)													# ¸ğµ¨°á°ú ¿ä¾à
-model_using$beta														# °è¼ö¸¦ º¸¿©ÁÜ, ÀıÆíÀ» ³ªÅ¸³»´Â °è¼ö´Â $a0·Î ºÒ·¯¿È
+model_using <- glmnet(log(price)~.,data=x_use,alpha=0.1,lambda=0.01)					# alphaì™€ lambdaë¥¼ ì´ë ‡ê²Œ íŠ¹ì •ì§€ì–´ì„œ glmnetìœ¼ë¡œ ëª¨ë¸ì„ ì í•©í•  ìˆ˜ ë„ ìˆìŒ, ì ë‹¹í•œ alpha, lambdaëŠ” ê¼­ bestTuneì—ì„œ ë‚˜ì˜¤ëŠ”ê²Œ ì•„ë‹ ìˆ˜ë„ ìˆìŒ
+summary(model_using)													# ëª¨ë¸ê²°ê³¼ ìš”ì•½
+model_using$beta														# ê³„ìˆ˜ë¥¼ ë³´ì—¬ì¤Œ, ì ˆí¸ì„ ë‚˜íƒ€ë‚´ëŠ” ê³„ìˆ˜ëŠ” $a0ë¡œ ë¶ˆëŸ¬ì˜´
 
-pred <- predict(model_using,x_use)											# ¿ì¼± ÈÆ·ÃÀÚ·á¸¦ ¾î¶»°Ô ¿¹ÃøÇØ³»´ÂÁö ¿¹Ãø : predict(ModelObject,TestData)
-																# predictÇÔ¼ö´ë½Å Data %*% Model$beta + Model$a0·Î Çà·Ä°è»êÇØµµ °°À½
-price_pred <- exp(pred)													# ¸ğµ¨ÀûÇÕ¿¡¼­ ¹İÀÀº¯¼ö¸¦ logº¯È¯ ÇØÁØ°ÍÀÌ±â ¶§¹®¿¡ ¿ø·¡ °¡°İ¿¡ ¸Â°Ô ´Ù½Ã Áö¼öº¯È¯
+pred <- predict(model_using,x_use)											# ìš°ì„  í›ˆë ¨ìë£Œë¥¼ ì–´ë–»ê²Œ ì˜ˆì¸¡í•´ë‚´ëŠ”ì§€ ì˜ˆì¸¡ : predict(ModelObject,TestData)
+																# predictí•¨ìˆ˜ëŒ€ì‹  Data %*% Model$beta + Model$a0ë¡œ í–‰ë ¬ê³„ì‚°í•´ë„ ê°™ìŒ
+price_pred <- exp(pred)													# ëª¨ë¸ì í•©ì—ì„œ ë°˜ì‘ë³€ìˆ˜ë¥¼ logë³€í™˜ í•´ì¤€ê²ƒì´ê¸° ë•Œë¬¸ì— ì›ë˜ ê°€ê²©ì— ë§ê²Œ ë‹¤ì‹œ ì§€ìˆ˜ë³€í™˜
